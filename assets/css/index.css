@@ -1,0 +1,51 @@
+/* styling for top fixed, form portion mainly using flex */
+
+.contHead{
+display: flex;
+flex-direction: column;
+justify-self: center;
+}
+
+.contMid{
+display: flex;
+flex-direction: row;
+}
+
+.contHead div{
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+.contHead .row_1{
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.contHead .row_2{
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+
+/* decription style */
+#desc{
+    font-family: cursive;
+    color: white;
+    font-size: x-large;
+}
+
+
+.td_item{
+    padding: 8px;
+    margin-right: 40px;
+    background-color:blueviolet;
+    border-style: outset;
+    border-color: white;
+    box-shadow: black;
+    border-radius: 0.7em;
+    border-width: 1.3pt;
+    margin-bottom: 10px;
+}

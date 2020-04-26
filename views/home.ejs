@@ -1,0 +1,120 @@
+<!-- i have used a mix of inline, external css as well as css -->
+
+<html>
+
+<head>
+    <title>
+        <%= locals.title %>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: grey;">
+    <div style="margin-right: auto;margin-left: auto; height: auto; width: 70%; background-color: white;">
+
+        <div class="contHead">
+
+            <div align="center" class="row">
+                <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">TODO APP</h1>
+            </div>
+
+
+            <!-- add to database route -->
+            <form action="/create-todo" method="POST">
+                <hr>
+                <div class="row_1">
+
+                    <h5 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">DESCRIPTION</h5>
+                    <br>
+                    <input type="text" name="desc" placeholder="What do you need to do?"
+                        style="width: 50%; margin-top: -20px; border-style:none ;" required>
+                </div>
+
+                <hr>
+
+                <div class="contMid">
+
+                    <div class="row_2">
+                        <h5 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">CATEGORY</h5>
+                        <br>
+                        <select style="margin-top: -20px; border-style:none; width: 240px;" name="cat">
+                            <option selected disabled>Choose a Category</option>
+                            <option value="PERSONAL">PERSONAL</option>
+                            <option value="WORK">WORK</option>
+                            <option value="SCHOOL">SCHOOL</option>
+                            <option value="DOB">DOB</option>
+                            <option value="EVENT">EVENT</option>
+                        </select>
+                    </div>
+
+
+                    <div class="row_3">
+                        <h5 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">DUE DATE</h5>
+                        <br>
+                        <input type="date" style="margin-top: -20px; border-style:none" name="dueDate">
+                    </div>
+
+
+
+                </div>
+
+                <hr>
+
+                <div align="center" class="row_4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        ADD TASK</button>
+                </div>
+            </form>
+        </div>
+
+
+        <br>
+
+        <ul type="NONE">
+            <!-- display the list of todos present in databse -->
+            <% for (let i of todo_list) { %>
+
+            <div class="td_item">
+                <div id="desc" style="margin-left: 10px; margin-bottom: 5px;"><b><%= i.desc %></b></div>
+                <div style="color:ivory; margin-left: 10px;margin-bottom: 10px;"><i><%= i.dueDate %></i></div>
+                <button style="margin-left: 10px; margin-bottom: 10px;" type="button"
+                    class="btn btn-primary"><%= i.cat %></button>
+
+
+                <!-- delete from database route -->
+                <div align="right">
+                    <a href="/delete-todo/?id=<%= i.id %>">
+                        <button style="margin-bottom: 10px;" type="button" class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i> DELETE</button>
+                    </a>
+                </div>
+
+
+
+            </div>
+
+
+            <% } %>
+        </ul>
+        <hr>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
